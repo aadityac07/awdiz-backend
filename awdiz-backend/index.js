@@ -17,6 +17,6 @@ app.get("/",function(req ,res){
 
 app.use("/api/v1",router);
 
-mongoose.connect(process.env.MONGOURL).then(()=>console.log('mongoDb connected'))
+mongoose.connect(process.env.MONGOURL).then(()=>console.log('mongoDb connected')) 
 
 app.listen(process.env.PORT,()=>console.log('successfully started at port '+ process.env.PORT))

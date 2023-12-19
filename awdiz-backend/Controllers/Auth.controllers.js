@@ -22,14 +22,10 @@ export const Login = async (req, res) => {
         return res.status(401).json({ success: false, message: "Wrong password." });
       }
   
-      const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET);
+      const token =await Jwt.sign({ id: user._id }, process.env.JWT_SECRET);
   
-      return res.status(200).json({
-        success: true,
-        message: "Login successful",
-        user: { name: user.name, email: user.email },
-        token: token
-      });
+      return res.status(200).json({success: true, message: "Login successful", user: { name: user.name, id:user._id },token: token
+      })
     } catch (error) {
       console.error("Error during login:", error);
       return res.status(500).json({ success: false, message: "Internal server error." });
